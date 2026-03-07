@@ -1,0 +1,19 @@
+---
+/** Site footer with optional copyright text. Renders full year automatically if useYear is true. */
+interface Props {
+	/** Text before the year (e.g. "© 2025 Longtex Corp. All rights reserved.") — include "YEAR" where the year should go */
+	copyright?: string;
+}
+
+const { copyright = "© YEAR Longtex Corp. All rights reserved." } = Astro.props;
+const year = new Date().getFullYear();
+const text = copyright.replace("YEAR", String(year));
+---
+
+<footer class="border-t border-white/10 px-6 py-8">
+	<div class="mx-auto max-w-[800px]">
+		<p class="m-0 text-center text-sm text-muted">
+			{text}
+		</p>
+	</div>
+</footer>

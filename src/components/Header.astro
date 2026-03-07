@@ -1,0 +1,34 @@
+---
+/** Nav link: href (anchor or URL) and label */
+export interface NavLink {
+	href: string;
+	label: string;
+}
+
+interface Props {
+	/** Site name or logo text (links to home) */
+	siteName?: string;
+	/** Links shown in the nav bar (e.g. About, Services, Contact) */
+	navLinks?: NavLink[];
+}
+
+const { siteName = "Longtex", navLinks = [
+	{ href: "#about", label: "About" },
+	{ href: "#services", label: "Services" },
+	{ href: "#contact", label: "Contact" },
+] } = Astro.props;
+---
+
+<!-- Sticky top bar: logo + nav links that scroll to sections or other pages -->
+<header class="sticky top-0 z-100 border-b border-white/10 bg-bg/90 py-4 backdrop-blur-md">
+	<nav class="mx-auto flex max-w-[1100px] items-center justify-between px-6">
+		<a href="/" class="text-xl font-bold text-text no-underline hover:text-accent">{siteName}</a>
+		<div class="flex gap-6">
+			{navLinks.map((link) => (
+				<a href={link.href} class="text-[0.9375rem] font-medium text-muted hover:text-text">
+					{link.label}
+				</a>
+			))}
+		</div>
+	</nav>
+</header>

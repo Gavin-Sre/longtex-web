@@ -1,0 +1,30 @@
+---
+/** Reusable link that looks like a button. Renders as <a> for SEO and accessibility. */
+type Variant = "primary" | "secondary";
+type Size = "default" | "large";
+
+interface Props {
+	href: string;
+	variant?: Variant;
+	size?: Size;
+	/** Optional extra class names */
+	class?: string;
+}
+
+const { href, variant = "primary", size = "default", class: className = "" } = Astro.props;
+
+const baseClasses = "inline-flex items-center justify-center rounded-lg font-semibold no-underline transition-colors";
+const variantClasses = {
+	primary: "bg-accent text-white hover:bg-accent-hover",
+	secondary: "border border-white/10 bg-surface text-text hover:bg-white/6",
+};
+const sizeClasses = {
+	default: "px-6 py-3 text-[0.9375rem]",
+	large: "px-8 py-4 text-base",
+};
+const classes = [baseClasses, variantClasses[variant], sizeClasses[size], className].filter(Boolean).join(" ");
+---
+
+<a href={href} class={classes}>
+	<slot />
+</a>

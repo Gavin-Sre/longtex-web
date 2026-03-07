@@ -1,0 +1,15 @@
+---
+/** Single service/value prop card for the services grid. */
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<li class="rounded-xl border border-white/10 bg-bg p-6">
+	<h3 class="mb-2 text-lg font-semibold">{title}</h3>
+	<p class="m-0 text-[0.9375rem] leading-[1.6] text-muted">
+		<slot />
+	</p>
+</li>

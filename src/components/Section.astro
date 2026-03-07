@@ -1,0 +1,32 @@
+---
+/** Wrapper for a content section: optional id (for anchor links), optional title, and consistent container/padding. */
+interface Props {
+	/** Optional id for in-page links (e.g. id="about") */
+	id?: string;
+	/** Section heading (e.g. "Who we are"); omit for no heading */
+	title?: string;
+	/** Extra classes on the section element */
+	class?: string;
+	/** If true, use alternate background (e.g. for services block) */
+	alt?: boolean;
+	/** If true, center text and content */
+	center?: boolean;
+}
+
+const { id, title, class: className = "", alt = false, center = false } = Astro.props;
+const sectionClasses = [
+	"px-6 py-16",
+	alt && "bg-surface",
+	center && "text-center",
+	className,
+].filter(Boolean).join(" ");
+---
+
+<section id={id} class={sectionClasses}>
+	<div class="mx-auto max-w-[800px]">
+		{title && (
+			<h2 class="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-tight">{title}</h2>
+		)}
+		<slot />
+	</div>
+</section>
