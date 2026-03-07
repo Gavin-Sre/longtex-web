@@ -1,0 +1,15 @@
+---
+/** Product highlight card for the landing page (e.g. Silicone, Talcum, Food Grade). */
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="rounded-xl border border-white/10 bg-bg p-6 transition-colors hover:border-white/20" role="article">
+	<h3 class="mb-2 text-lg font-semibold">{title}</h3>
+	<p class="m-0 text-[0.9375rem] leading-[1.6] text-muted">
+		<slot />
+	</p>
+</div>

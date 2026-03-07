@@ -15,3 +15,22 @@
 html {
 	scroll-behavior: smooth;
 }
+
+/* Scroll reveal: hidden until in viewport (only when motion is allowed) */
+@media (prefers-reduced-motion: no-preference) {
+	.scroll-reveal {
+		opacity: 0;
+		transform: translateY(1.25rem);
+		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	}
+	.scroll-reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.scroll-reveal.visible {
+		opacity: 1;
+		transform: none;
+	}
+}

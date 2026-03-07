@@ -4,63 +4,93 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Button from "../components/Button.astro";
 import Section from "../components/Section.astro";
-import ServiceCard from "../components/ServiceCard.astro";
+import ProductCard from "../components/ProductCard.astro";
+import ScrollReveal from "../components/ScrollReveal.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <Layout
-	title="Longtex Corp — Quality You Can Build On"
-	description="Longtex Corp delivers reliable solutions and partnerships. Explore our services and get in touch."
+	title="Natural Rubber Thread Manufacturer Thailand | Longtex — ISO Certified"
+	description="High-quality extruded rubber threads. Silicone, talcum, and food-grade coatings. ISO certified. Contact Longtex Rubber Industry."
 >
 	<Header />
 
 	<main>
-		<!-- Hero: main headline and primary CTAs above the fold -->
+		<!-- Hero: aligned with longtex.co.th — rubber threads value prop -->
 		<section class="flex min-h-[85vh] items-center justify-center px-6 py-16 text-center">
 			<div class="max-w-[640px]">
 				<h1 class="mb-5 text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-tight tracking-tight">
-					Quality you can build on.
+					Longtex Rubber Industry
 				</h1>
 				<p class="mb-8 text-lg leading-[1.65] text-muted">
-					Longtex Corp partners with businesses to deliver reliable solutions, trusted expertise, and lasting results.
+					Looking for high quality extruded rubber threads? We're here to help!
 				</p>
 				<div class="flex flex-wrap justify-center gap-4">
-					<Button href="#contact">Get in touch</Button>
-					<Button href="#services" variant="secondary">Our services</Button>
+					<Button href="#contact">Contact us</Button>
+					<Button href="#products" variant="secondary">Explore products</Button>
 				</div>
 			</div>
 		</section>
 
-		<!-- About: company intro; id="about" is the target for the nav link -->
-		<Section id="about" title="Who we are">
-			<p class="m-0 text-[1.0625rem] leading-[1.7] text-muted">
-				We combine industry experience with a focus on quality and reliability. Whether you need supply chain solutions, manufacturing support, or strategic partnership, we're here to help your business grow.
-			</p>
+		<!-- About: company intro (scroll-reveal) -->
+		<ScrollReveal>
+			<Section id="about" title="Who we are">
+				<p class="m-0 text-[1.0625rem] leading-[1.7] text-muted">
+					We combine industry experience with a focus on quality and reliability. From silicone and talcum coatings to food-grade and specialized threads, we deliver extruded rubber solutions that meet demanding applications worldwide.
+				</p>
+			</Section>
+		</ScrollReveal>
+
+		<!-- Products: four product highlights like longtex.co.th (scroll-reveal with stagger) -->
+		<Section id="products" title="Products" alt wide>
+			<div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" role="list">
+				<ScrollReveal delay={0}>
+					<ProductCard title="Silicone">
+						Elevate performance with silicone-coated rubber threads — dust free, durable, flexible, and adaptable for various demanding applications.
+					</ProductCard>
+				</ScrollReveal>
+				<ScrollReveal delay={80}>
+					<ProductCard title="Talcum">
+						Experience excellence with talcum-coated rubber threads — enhanced softness, reduced friction, and impeccable handling for optimum performance.
+					</ProductCard>
+				</ScrollReveal>
+				<ScrollReveal delay={160}>
+					<ProductCard title="Food Grade">
+						Food-grade rubber threads ensure compliance with regulations, offering safety, hygiene, and quality assurance for various applications.
+					</ProductCard>
+				</ScrollReveal>
+				<ScrollReveal delay={240}>
+					<ProductCard title="Specialized Threads">
+						Choose excellence beyond standards; our threads meet unique needs with UV resistance, fire retardancy, and vibrant colors.
+					</ProductCard>
+				</ScrollReveal>
+			</div>
+			<div class="mt-10 flex justify-center">
+				<ScrollReveal delay={120}>
+					<Button href="#contact" variant="secondary" size="large">Explore our products</Button>
+				</ScrollReveal>
+			</div>
 		</Section>
 
-		<!-- Services: three value props in a grid; id="services" for nav -->
-		<Section id="services" title="What we do" alt>
-			<ul class="mt-8 grid list-none gap-6 p-0 sm:grid-cols-3">
-				<ServiceCard title="Supply & sourcing">
-					Trusted supply chain and sourcing solutions tailored to your needs.
-				</ServiceCard>
-				<ServiceCard title="Partnership">
-					Long-term partnerships built on transparency and performance.
-				</ServiceCard>
-				<ServiceCard title="Reliability">
-					Consistent quality and delivery you can plan around.
-				</ServiceCard>
-			</ul>
-		</Section>
+		<!-- Certifications / trust (scroll-reveal) -->
+		<ScrollReveal>
+			<Section id="certifications" title="Certifications" center>
+				<p class="mx-0 mb-0 mt-2 text-[1.0625rem] leading-[1.7] text-muted">
+					ISO certified. Quality and consistency you can rely on for your supply chain.
+				</p>
+			</Section>
+		</ScrollReveal>
 
-		<!-- Contact CTA: final call to action; id="contact" for nav and hero button -->
-		<Section id="contact" title="Let's work together" center>
-			<p class="mx-0 mb-6 mt-0 text-[1.0625rem] leading-[1.7] text-muted">
-				Ready to get started? Reach out and we'll get back to you as soon as we can.
-			</p>
-			<Button href="mailto:contact@longtex.com" size="large">Contact us</Button>
-		</Section>
+		<!-- Contact CTA (scroll-reveal) -->
+		<ScrollReveal>
+			<Section id="contact" title="Let's work together" center>
+				<p class="mx-0 mb-6 mt-0 text-[1.0625rem] leading-[1.7] text-muted">
+					Ready to get started? Reach out and we'll get back to you as soon as we can.
+				</p>
+				<Button href="mailto:contact@longtex.com" size="large">Contact us</Button>
+			</Section>
+		</ScrollReveal>
 	</main>
 
-	<Footer />
+	<Footer copyright="© YEAR Longtex Rubber Industry Co., Ltd. All rights reserved." />
 </Layout>

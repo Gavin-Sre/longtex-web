@@ -1,0 +1,50 @@
+---
+/** Wrapper that reveals content on scroll via Intersection Observer. Respects prefers-reduced-motion. */
+interface Props {
+	/** Delay in ms before starting the reveal (for staggered children) */
+	delay?: number;
+	/** Optional class on the wrapper */
+	class?: string;
+}
+
+const { delay = 0, class: className = "" } = Astro.props;
+---
+
+<div
+	class:list={["scroll-reveal", className]}
+	data-scroll-reveal
+	data-delay={delay}
+>
+	<slot />
+</div>
+
+<script>
+	(function () {
+		function initScrollReveal() {
+			const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			if (reducedMotion) {
+				document.querySelectorAll("[data-scroll-reveal]").forEach((el) => el.classList.add("visible"));
+				return;
+			}
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (!entry.isIntersecting) return;
+						const el = entry.target as HTMLElement;
+						const delay = parseInt(el.dataset.delay ?? "0", 10);
+						setTimeout(() => el.classList.add("visible"), delay);
+					});
+				},
+				{ rootMargin: "0px 0px -8% 0px", threshold: 0 }
+			);
+			document.querySelectorAll("[data-scroll-reveal]").forEach((el) => observer.observe(el));
+		}
+		const run = () => {
+			if ((window as unknown as { __scrollRevealInit?: boolean }).__scrollRevealInit) return;
+			(window as unknown as { __scrollRevealInit?: boolean }).__scrollRevealInit = true;
+			initScrollReveal();
+		};
+		if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+		else run();
+	})();
+</script>
