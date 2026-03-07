@@ -6,27 +6,33 @@ export interface NavLink {
 }
 
 interface Props {
-	/** Site name or logo text (links to home) */
+	/** Path to logo image (e.g. /ltxlogo-nobg3.png); if not set, shows siteName as text */
+	logoSrc?: string;
+	/** Site name (used as logo alt and fallback if no logo) */
 	siteName?: string;
-	/** Links shown in the nav bar (e.g. About, Services, Contact) */
+	/** Links shown in the nav bar — matches original longtex.co.th structure */
 	navLinks?: NavLink[];
 }
 
-const { siteName = "Longtex", navLinks = [
-	{ href: "#about", label: "About" },
-	{ href: "#products", label: "Products" },
-	{ href: "#certifications", label: "Reference" },
-	{ href: "#contact", label: "Contact" },
+const { logoSrc = "/ltxlogo-nobg3.png", siteName = "Longtex Rubber Industry", navLinks = [
+	{ href: "/", label: "HOME" },
+	{ href: "/about", label: "ABOUT" },
+	{ href: "/products", label: "PRODUCTS" },
+	{ href: "/products#papp", label: "APPLICATIONS" },
+	{ href: "/reference", label: "REFERENCE" },
+	{ href: "/contact", label: "CONTACT" },
 ] } = Astro.props;
 ---
 
-<!-- Sticky top bar: logo + nav links that scroll to sections or other pages -->
-<header class="sticky top-0 z-100 border-b border-white/10 bg-bg/90 py-4 backdrop-blur-md">
-	<nav class="mx-auto flex max-w-[1100px] items-center justify-between px-6">
-		<a href="/" class="text-xl font-bold text-text no-underline hover:text-accent">{siteName}</a>
-		<div class="flex gap-6">
+<!-- Sticky top bar: logo + nav links (matches original longtex.co.th) -->
+<header class="sticky top-0 z-100 border-b border-white/10 bg-bg/95 py-3 backdrop-blur-md">
+	<nav class="mx-auto flex max-w-[1100px] items-center justify-between px-4 sm:px-6">
+		<a href="/" class="flex items-center gap-2 text-text no-underline hover:opacity-90">
+			<img src={logoSrc} alt={siteName} class="h-12 w-auto" width="160" height="55" />
+		</a>
+		<div class="flex flex-wrap items-center justify-end gap-4 sm:gap-6">
 			{navLinks.map((link) => (
-				<a href={link.href} class="text-[0.9375rem] font-medium text-muted hover:text-text">
+				<a href={link.href} class="text-[0.8125rem] font-medium uppercase tracking-wide text-muted hover:text-text sm:text-[0.9375rem]">
 					{link.label}
 				</a>
 			))}

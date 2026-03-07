@@ -1,5 +1,5 @@
 ---
-// Base layout wraps this page and provides <head>, meta tags, and Tailwind
+// Landing page — structure and copy from longtex.co.th, improved layout and scroll animations
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Button from "../components/Button.astro";
@@ -7,32 +7,63 @@ import Section from "../components/Section.astro";
 import ProductCard from "../components/ProductCard.astro";
 import ScrollReveal from "../components/ScrollReveal.astro";
 import Footer from "../components/Footer.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
 ---
 
 <Layout
-	title="Natural Rubber Thread Manufacturer Thailand | Longtex — ISO Certified"
-	description="High-quality extruded rubber threads. Silicone, talcum, and food-grade coatings. ISO certified. Contact Longtex Rubber Industry."
+	title="Natural Rubber Thread Manufacturer Thailand | Longtex - ISO Certified"
+	description="Leading Thailand natural rubber thread manufacturer. ISO certified silicone, talcum, food-grade extruded rubber threads for textile, medical & industrial applications. Export worldwide."
+	keywords="rubber thread manufacturer Thailand, natural latex thread, silicone rubber thread, talcum coated thread, food grade rubber thread, elastic thread Thailand"
 >
 	<Header />
 
 	<main>
-		<!-- Hero: aligned with longtex.co.th — rubber threads value prop -->
-		<section class="flex min-h-[85vh] items-center justify-center px-6 py-16 text-center">
-			<div class="max-w-[640px]">
-				<h1 class="mb-5 text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-tight tracking-tight">
+		<!-- Hero: background image from public/rubber-tapping.jpg (like original longtex.co.th) -->
+		<section class="relative flex min-h-[70vh] items-center justify-center bg-bg px-6 py-20 text-center">
+			<div class="absolute inset-0">
+				<img
+					src="/rubber-tapping.jpg"
+					alt="Rubber tapping"
+					class="h-full w-full object-cover"
+					width="1200"
+					height="800"
+					fetchpriority="high"
+				/>
+				<div class="absolute inset-0 bg-black/50" aria-hidden="true" />
+			</div>
+			<div class="hero-text relative z-10 max-w-[640px]">
+				<h1 class="hero-text-item mb-4 text-[clamp(2rem,5vw,3.25rem)] font-bold leading-tight tracking-tight text-white drop-shadow-md">
 					Longtex Rubber Industry
 				</h1>
-				<p class="mb-8 text-lg leading-[1.65] text-muted">
+				<p class="hero-text-item mb-8 text-lg font-medium leading-[1.65] text-white/95 drop-shadow-sm">
 					Looking for high quality extruded rubber threads? We're here to help!
 				</p>
-				<div class="flex flex-wrap justify-center gap-4">
-					<Button href="#contact">Contact us</Button>
-					<Button href="#products" variant="secondary">Explore products</Button>
-				</div>
+				<a href="/contact" class="hero-text-item inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-bg no-underline transition-colors hover:bg-white/90">
+					Contact Us
+				</a>
 			</div>
 		</section>
 
-		<!-- About: company intro (scroll-reveal) -->
+		<style>
+			@media (prefers-reduced-motion: no-preference) {
+				.hero-text-item {
+					opacity: 0;
+					animation: hero-fade-in 0.7s ease-out forwards;
+				}
+				.hero-text-item:nth-child(1) { animation-delay: 0.1s; }
+				.hero-text-item:nth-child(2) { animation-delay: 0.3s; }
+				.hero-text-item:nth-child(3) { animation-delay: 0.5s; }
+				@keyframes hero-fade-in {
+					from { opacity: 0; }
+					to { opacity: 1; }
+				}
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.hero-text-item { opacity: 1; }
+			}
+		</style>
+
+		<!-- About (scroll-reveal) -->
 		<ScrollReveal>
 			<Section id="about" title="Who we are">
 				<p class="m-0 text-[1.0625rem] leading-[1.7] text-muted">
@@ -41,56 +72,62 @@ import Footer from "../components/Footer.astro";
 			</Section>
 		</ScrollReveal>
 
-		<!-- Products: four product highlights like longtex.co.th (scroll-reveal with stagger) -->
+		<!-- Products: four cards with images from public (like original — image + overlay) -->
 		<Section id="products" title="Products" alt wide>
 			<div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" role="list">
 				<ScrollReveal delay={0}>
-					<ProductCard title="Silicone">
+					<ProductCard title="Silicone" imageSrc="/silicone.jpg" imageAlt="Silicone rubber thread">
 						Elevate performance with silicone-coated rubber threads — dust free, durable, flexible, and adaptable for various demanding applications.
 					</ProductCard>
 				</ScrollReveal>
 				<ScrollReveal delay={80}>
-					<ProductCard title="Talcum">
+					<ProductCard title="Talcum" imageSrc="/talcum.jpg" imageAlt="Talcum coated rubber thread">
 						Experience excellence with talcum-coated rubber threads — enhanced softness, reduced friction, and impeccable handling for optimum performance.
 					</ProductCard>
 				</ScrollReveal>
 				<ScrollReveal delay={160}>
-					<ProductCard title="Food Grade">
+					<ProductCard title="Food Grade" imageSrc="/talcum.jpg" imageAlt="Food grade rubber thread">
 						Food-grade rubber threads ensure compliance with regulations, offering safety, hygiene, and quality assurance for various applications.
 					</ProductCard>
 				</ScrollReveal>
 				<ScrollReveal delay={240}>
-					<ProductCard title="Specialized Threads">
+					<ProductCard title="Specialized Threads" imageSrc="/color.jpg" imageAlt="Specialized rubber threads">
 						Choose excellence beyond standards; our threads meet unique needs with UV resistance, fire retardancy, and vibrant colors.
 					</ProductCard>
 				</ScrollReveal>
 			</div>
 			<div class="mt-10 flex justify-center">
 				<ScrollReveal delay={120}>
-					<Button href="#contact" variant="secondary" size="large">Explore our products</Button>
+					<Button href="/products" variant="secondary" size="large">Explore our products</Button>
 				</ScrollReveal>
 			</div>
 		</Section>
 
-		<!-- Certifications / trust (scroll-reveal) -->
+		<!-- Certifications (from original — add ltxiso.png & oeko-text-logo.png to public to show logos) -->
 		<ScrollReveal>
 			<Section id="certifications" title="Certifications" center>
-				<p class="mx-0 mb-0 mt-2 text-[1.0625rem] leading-[1.7] text-muted">
+				<p class="mx-0 mb-6 mt-2 text-[1.0625rem] leading-[1.7] text-muted">
 					ISO certified. Quality and consistency you can rely on for your supply chain.
 				</p>
+				<!-- Optional: add images to public/ and uncomment: <img src="/ltxiso.png" alt="ISO" class="h-24 inline-block" /> <img src="/oeko-text-logo.png" alt="OEKO-TEX" class="h-24 inline-block ml-4" /> -->
 			</Section>
 		</ScrollReveal>
 
-		<!-- Contact CTA (scroll-reveal) -->
+		<!-- Contact CTA -->
 		<ScrollReveal>
 			<Section id="contact" title="Let's work together" center>
 				<p class="mx-0 mb-6 mt-0 text-[1.0625rem] leading-[1.7] text-muted">
 					Ready to get started? Reach out and we'll get back to you as soon as we can.
 				</p>
-				<Button href="mailto:contact@longtex.com" size="large">Contact us</Button>
+				<Button href="/contact" size="large">Contact us</Button>
 			</Section>
 		</ScrollReveal>
 	</main>
 
-	<Footer copyright="© YEAR Longtex Rubber Industry Co., Ltd. All rights reserved." />
+	<Footer
+		copyright="© YEAR Longtex Rubber Industry Co., Ltd."
+		address="121/32 Moo 8 Soi Suksawad 74, Suksawad Rd., Bangkru, Prapradaeng, Samutprakarn 10130 Thailand."
+	/>
+
+	<ScrollToTop />
 </Layout>

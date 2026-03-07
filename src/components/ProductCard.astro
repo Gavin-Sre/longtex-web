@@ -1,15 +1,30 @@
 ---
-/** Product highlight card for the landing page (e.g. Silicone, Talcum, Food Grade). */
+/** Product highlight card with image and overlay (like original longtex.co.th). */
 interface Props {
 	title: string;
+	/** Image path in public (e.g. /silicone.jpg) */
+	imageSrc: string;
+	/** Alt text for the image */
+	imageAlt: string;
 }
 
-const { title } = Astro.props;
+const { title, imageSrc, imageAlt } = Astro.props;
 ---
 
-<div class="rounded-xl border border-white/10 bg-bg p-6 transition-colors hover:border-white/20" role="article">
-	<h3 class="mb-2 text-lg font-semibold">{title}</h3>
-	<p class="m-0 text-[0.9375rem] leading-[1.6] text-muted">
-		<slot />
-	</p>
+<div class="group relative overflow-hidden rounded-xl" role="article">
+	<img
+		src={imageSrc}
+		alt={imageAlt}
+		class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-64"
+		width="400"
+		height="256"
+		loading="lazy"
+	/>
+	<!-- Bottom overlay: title + description (like original .container .content) -->
+	<div class="absolute inset-x-0 bottom-0 bg-black/60 px-4 py-4 text-white backdrop-blur-[2px]">
+		<h3 class="mb-2 text-lg font-semibold">{title}</h3>
+		<p class="m-0 text-sm leading-[1.6] text-white/90">
+			<slot />
+		</p>
+	</div>
 </div>

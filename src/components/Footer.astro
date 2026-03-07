@@ -1,19 +1,26 @@
 ---
-/** Site footer with optional copyright text. Renders full year automatically if useYear is true. */
+/** Site footer with copyright and optional address (from original longtex.co.th). */
 interface Props {
-	/** Text before the year (e.g. "© 2025 Longtex Corp. All rights reserved.") — include "YEAR" where the year should go */
+	/** Copyright line; use YEAR for current year (e.g. "© YEAR Longtex Rubber Industry Co., Ltd.") */
 	copyright?: string;
+	/** Optional address lines (e.g. Thailand address) */
+	address?: string;
 }
 
-const { copyright = "© YEAR Longtex Corp. All rights reserved." } = Astro.props;
+const { copyright = "© YEAR Longtex Rubber Industry Co., Ltd.", address } = Astro.props;
 const year = new Date().getFullYear();
-const text = copyright.replace("YEAR", String(year));
+const copyrightText = copyright.replace("YEAR", String(year));
 ---
 
-<footer class="border-t border-white/10 px-6 py-8">
-	<div class="mx-auto max-w-[800px]">
-		<p class="m-0 text-center text-sm text-muted">
-			{text}
+<footer class="border-t border-white/10 bg-white/5 px-6 py-8">
+	<div class="mx-auto max-w-[800px] text-center">
+		<p class="m-0 text-sm text-muted">
+			{copyrightText}
 		</p>
+		{address && (
+			<p class="mt-2 text-sm text-muted">
+				{address}
+			</p>
+		)}
 	</div>
 </footer>

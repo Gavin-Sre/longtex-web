@@ -1,0 +1,33 @@
+---
+/** Scroll-to-top button: shows after user scrolls down, smooth scroll to top (from original longtex.co.th). */
+---
+
+<button
+	type="button"
+	id="scrollToTopBtn"
+	class="scroll-to-top fixed bottom-6 right-6 z-50 hidden h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-bg/90 text-text shadow-lg backdrop-blur-md transition-opacity hover:bg-surface hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent"
+	aria-label="Back to top"
+>
+	<span class="sr-only">Back to top</span>
+	<svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+	</svg>
+</button>
+
+<script>
+	(function () {
+		const btn = document.getElementById("scrollToTopBtn");
+		if (!btn) return;
+		const scrollBtn = btn as HTMLButtonElement;
+		function toggle() {
+			const y = document.documentElement.scrollTop || document.body.scrollTop;
+			scrollBtn.style.display = y > 100 ? "flex" : "none";
+		}
+		function backToTop() {
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}
+		window.addEventListener("scroll", toggle, { passive: true });
+		scrollBtn.addEventListener("click", backToTop);
+		toggle();
+	})();
+</script>

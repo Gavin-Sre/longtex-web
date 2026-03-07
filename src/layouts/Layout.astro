@@ -2,16 +2,17 @@
 /** Tailwind: global styles and theme (design tokens) — must be imported so Vite bundles it */
 import "../styles/global.css";
 
-/** Layout props: every page can pass a custom title and optional meta description */
+/** Layout props: every page can pass a custom title, optional meta description, and optional keywords */
 interface Props {
 	title: string;
 	description?: string;
+	keywords?: string;
 }
 
-const { title, description = "Longtex Corp — Quality and reliability you can build on." } = Astro.props;
+const { title, description = "Longtex Rubber Industry is a leading rubber thread manufacturer in Thailand, supplying high-quality natural latex rubber thread for textile, food, and industrial applications. Trusted global supplier for OEM and export markets.", keywords } = Astro.props;
 
-/** Build canonical URL for this page (used for SEO and Open Graph); falls back to longtex.com if site not set in config */
-const base = Astro.site?.href ?? "https://longtex.com";
+/** Build canonical URL for this page (used for SEO and Open Graph); falls back to longtex.co.th if site not set in config */
+const base = Astro.site?.href ?? "https://www.longtex.co.th";
 const canonicalURL = new URL(Astro.url.pathname, base);
 ---
 
@@ -21,15 +22,18 @@ const canonicalURL = new URL(Astro.url.pathname, base);
 		<!-- Basic document and mobile viewport -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-		<!-- Favicons (browser tab and bookmarks) -->
+		<!-- Favicons: Longtex logo and fallbacks -->
+		<link rel="icon" href="/ltxlogo-nobg3.png" type="image/png" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
 
-		<!-- SEO: page title and description (search results snippet) -->
+		<!-- SEO: title, description, keywords (from original longtex.co.th) -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		{keywords && <meta name="keywords" content={keywords} />}
 		<link rel="canonical" href={canonicalURL} />
 
 		<!-- Open Graph: how the page looks when shared on social (e.g. Facebook, LinkedIn) -->
@@ -43,6 +47,15 @@ const canonicalURL = new URL(Astro.url.pathname, base);
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+		<!-- Google Analytics (gtag.js) — same ID as longtex.co.th -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-G5X1E0EXYF"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-G5X1E0EXYF');
+		</script>
 	</head>
 	<body class="min-h-screen bg-bg font-sans text-text antialiased">
 		<!-- Page content is injected here by each page that uses this layout -->
