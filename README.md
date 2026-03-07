@@ -4,12 +4,12 @@ A site for Longtex Corp. Built with [Astro](https://astro.build).
 
 ## Commands
 
-| Command         | Action                              |
-| --------------- | ------------------------------------ |
-| `pnpm install`  | Install dependencies                 |
-| `pnpm dev`      | Start dev server at `localhost:4321` |
-| `pnpm build`    | Build for production to `./dist/`    |
-| `pnpm preview`  | Preview the production build locally |
+| Command        | Action                               |
+| -------------- | ------------------------------------ |
+| `pnpm install` | Install dependencies                 |
+| `pnpm dev`     | Start dev server at `localhost:4321` |
+| `pnpm build`   | Build for production to `./dist/`    |
+| `pnpm preview` | Preview the production build locally |
 
 ## Project structure
 

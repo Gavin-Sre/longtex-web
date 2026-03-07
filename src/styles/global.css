@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Custom theme for Longtex: colors and font (change these to rebrand) */
+@theme {
+	--color-bg: #0f1419;
+	--color-surface: #1a2332;
+	--color-text: #e6edf3;
+	--color-text-muted: #8b9cb3;
+	--color-accent: #3b82f6;
+	--color-accent-hover: #2563eb;
+	--font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Smooth scroll when clicking in-page anchor links (e.g. #about) */
+html {
+	scroll-behavior: smooth;
+}

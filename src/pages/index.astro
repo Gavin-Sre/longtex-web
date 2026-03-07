@@ -1,17 +1,102 @@
 ---
-
+// Base layout wraps this page and provides <head>, meta tags, and Tailwind
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+	title="Longtex Corp — Quality You Can Build On"
+	description="Longtex Corp delivers reliable solutions and partnerships. Explore our services and get in touch."
+>
+	<!-- Sticky top bar: logo + nav links that scroll to sections on this page -->
+	<header class="sticky top-0 z-100 border-b border-white/10 bg-bg/90 py-4 backdrop-blur-md">
+		<nav class="mx-auto flex max-w-[1100px] items-center justify-between px-6">
+			<a href="/" class="text-xl font-bold text-text no-underline hover:text-accent">Longtex</a>
+			<div class="flex gap-6">
+				<a href="#about" class="text-[0.9375rem] font-medium text-muted hover:text-text">About</a>
+				<a href="#services" class="text-[0.9375rem] font-medium text-muted hover:text-text">Services</a>
+				<a href="#contact" class="text-[0.9375rem] font-medium text-muted hover:text-text">Contact</a>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<!-- Hero: main headline and primary CTAs above the fold -->
+		<section class="flex min-h-[85vh] items-center justify-center px-6 py-16 text-center">
+			<div class="max-w-[640px]">
+				<h1 class="mb-5 text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-tight tracking-tight">
+					Quality you can build on.
+				</h1>
+				<p class="mb-8 text-lg leading-[1.65] text-muted">
+					Longtex Corp partners with businesses to deliver reliable solutions, trusted expertise, and lasting results.
+				</p>
+				<div class="flex flex-wrap justify-center gap-4">
+					<a href="#contact" class="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-[0.9375rem] font-semibold text-white no-underline transition-colors hover:bg-accent-hover">
+						Get in touch
+					</a>
+					<a href="#services" class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-surface px-6 py-3 text-[0.9375rem] font-semibold text-text no-underline transition-colors hover:bg-white/6">
+						Our services
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- About: company intro; id="about" is the target for the nav link -->
+		<section id="about" class="px-6 py-16">
+			<div class="mx-auto max-w-[800px]">
+				<h2 class="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-tight">Who we are</h2>
+				<p class="m-0 text-[1.0625rem] leading-[1.7] text-muted">
+					We combine industry experience with a focus on quality and reliability. Whether you need supply chain solutions, manufacturing support, or strategic partnership, we're here to help your business grow.
+				</p>
+			</div>
+		</section>
+
+		<!-- Services: three value props in a grid; id="services" for nav -->
+		<section id="services" class="bg-surface px-6 py-16">
+			<div class="mx-auto max-w-[800px]">
+				<h2 class="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-tight">What we do</h2>
+				<ul class="mt-8 grid list-none gap-6 p-0 sm:grid-cols-3">
+					<li class="rounded-xl border border-white/10 bg-bg p-6">
+						<h3 class="mb-2 text-lg font-semibold">Supply & sourcing</h3>
+						<p class="m-0 text-[0.9375rem] leading-[1.6] text-muted">
+							Trusted supply chain and sourcing solutions tailored to your needs.
+						</p>
+					</li>
+					<li class="rounded-xl border border-white/10 bg-bg p-6">
+						<h3 class="mb-2 text-lg font-semibold">Partnership</h3>
+						<p class="m-0 text-[0.9375rem] leading-[1.6] text-muted">
+							Long-term partnerships built on transparency and performance.
+						</p>
+					</li>
+					<li class="rounded-xl border border-white/10 bg-bg p-6">
+						<h3 class="mb-2 text-lg font-semibold">Reliability</h3>
+						<p class="m-0 text-[0.9375rem] leading-[1.6] text-muted">
+							Consistent quality and delivery you can plan around.
+						</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Contact CTA: final call to action; id="contact" for nav and hero button -->
+		<section id="contact" class="px-6 py-16 text-center">
+			<div class="mx-auto max-w-[800px]">
+				<h2 class="mb-4 text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-tight">Let's work together</h2>
+				<p class="mx-0 mb-6 mt-0 text-[1.0625rem] leading-[1.7] text-muted">
+					Ready to get started? Reach out and we'll get back to you as soon as we can.
+				</p>
+				<a href="mailto:contact@longtex.com" class="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 text-base font-semibold text-white no-underline transition-colors hover:bg-accent-hover">
+					Contact us
+				</a>
+			</div>
+		</section>
+	</main>
+
+	<!-- Footer: copyright; year is dynamic so it stays current -->
+	<footer class="border-t border-white/10 px-6 py-8">
+		<div class="mx-auto max-w-[800px]">
+			<p class="m-0 text-center text-sm text-muted">
+				© {new Date().getFullYear()} Longtex Corp. All rights reserved.
+			</p>
+		</div>
+	</footer>
+</Layout>

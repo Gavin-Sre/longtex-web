@@ -1,0 +1,51 @@
+---
+/** Tailwind: global styles and theme (design tokens) — must be imported so Vite bundles it */
+import "../styles/global.css";
+
+/** Layout props: every page can pass a custom title and optional meta description */
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Longtex Corp — Quality and reliability you can build on." } = Astro.props;
+
+/** Build canonical URL for this page (used for SEO and Open Graph); falls back to longtex.com if site not set in config */
+const base = Astro.site?.href ?? "https://longtex.com";
+const canonicalURL = new URL(Astro.url.pathname, base);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Basic document and mobile viewport -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Favicons (browser tab and bookmarks) -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- SEO: page title and description (search results snippet) -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph: how the page looks when shared on social (e.g. Facebook, LinkedIn) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Google Fonts: preconnect for speed, then load Plus Jakarta Sans -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	</head>
+	<body class="min-h-screen bg-bg font-sans text-text antialiased">
+		<!-- Page content is injected here by each page that uses this layout -->
+		<slot />
+	</body>
+</html>
