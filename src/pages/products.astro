@@ -8,9 +8,10 @@ import ProductSection from "../components/ProductSection.astro";
 import ProductApplications from "../components/ProductApplications.astro";
 import ScrollReveal from "../components/ScrollReveal.astro";
 
-const talcumImages = ["/talcum-coated-1.jpg", "/talcum-coated-2.jpg", "/talcum-coated-3.jpg"];
-const siliconeImages = ["/silicone-coated-1.jpg", "/silicone-coated-2.jpg", "/silicone-coated-3.jpg"];
-const foodGradeImages = ["/food-grade-rubber-1.jpg", "/food-grade-rubber-2.jpg", "/food-grade-rubber-3.jpg"];
+const baseUrl = import.meta.env.BASE_URL;
+const talcumImages = [`${baseUrl}talcum-coated-1.jpg`, `${baseUrl}talcum-coated-2.jpg`, `${baseUrl}talcum-coated-3.jpg`];
+const siliconeImages = [`${baseUrl}silicone-coated-1.jpg`, `${baseUrl}silicone-coated-2.jpg`, `${baseUrl}silicone-coated-3.jpg`];
+const foodGradeImages = [`${baseUrl}food-grade-rubber-1.jpg`, `${baseUrl}food-grade-rubber-2.jpg`, `${baseUrl}food-grade-rubber-3.jpg`];
 
 const talcumHeaderRow1 = [
 	{ text: "Count", rowspan: 2 },

@@ -11,9 +11,12 @@ interface Props {
 
 const { title, description = "Longtex Rubber Industry is a leading rubber thread manufacturer in Thailand, supplying high-quality natural latex rubber thread for textile, food, and industrial applications. Trusted global supplier for OEM and export markets.", keywords } = Astro.props;
 
+/** Base URL for assets and links (e.g. /longtex-web/ on GitHub Pages) */
+const baseUrl = import.meta.env.BASE_URL;
+
 /** Build canonical URL for this page (used for SEO and Open Graph); falls back to longtex.co.th if site not set in config */
-const base = Astro.site?.href ?? "https://www.longtex.co.th";
-const canonicalURL = new URL(Astro.url.pathname, base);
+const siteOrigin = Astro.site?.href ?? "https://www.longtex.co.th";
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
 ---
 
 <!doctype html>
@@ -25,9 +28,9 @@ const canonicalURL = new URL(Astro.url.pathname, base);
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 		<!-- Favicons: Longtex logo and fallbacks -->
-		<link rel="icon" href="/ltxlogo-nobg3.png" type="image/png" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href={`${baseUrl}ltxlogo-nobg3.png`} type="image/png" />
+		<link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+		<link rel="shortcut icon" href={`${baseUrl}favicon.ico`} type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
 
 		<!-- SEO: title, description, keywords (from original longtex.co.th) -->
