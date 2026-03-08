@@ -10,7 +10,7 @@ import ProductApplications from "../components/ProductApplications.astro";
 import Footer from "../components/Footer.astro";
 import ScrollToTop from "../components/ScrollToTop.astro";
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 ---
 
 <Layout

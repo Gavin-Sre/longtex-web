@@ -14,7 +14,7 @@ interface Props {
 	navLinks?: NavLink[];
 }
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 
 const { logoSrc = `${baseUrl}ltxlogo-nobg3.png`, siteName = "Longtex Rubber Industry", navLinks = [
 	{ href: baseUrl, label: "HOME" },
