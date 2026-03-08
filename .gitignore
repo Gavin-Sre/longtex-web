@@ -23,5 +23,5 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# large assets (keep locally; host on CDN or add via CI for deployment)
+# large assets — force-add with: git add -f public/<file>.jpg
 public/*.jpg
