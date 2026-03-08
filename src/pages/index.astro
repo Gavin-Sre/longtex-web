@@ -6,6 +6,7 @@ import Button from "../components/Button.astro";
 import Section from "../components/Section.astro";
 import ProductCard from "../components/ProductCard.astro";
 import ScrollReveal from "../components/ScrollReveal.astro";
+import ProductApplications from "../components/ProductApplications.astro";
 import Footer from "../components/Footer.astro";
 import ScrollToTop from "../components/ScrollToTop.astro";
 ---
@@ -102,6 +103,15 @@ import ScrollToTop from "../components/ScrollToTop.astro";
 				</ScrollReveal>
 			</div>
 		</Section>
+
+		<!-- Product Applications infographic (central hub + 5 cards with dotted lines) -->
+		<ScrollReveal>
+			<section id="papp" class="px-6 py-16">
+				<div class="mx-auto max-w-[900px]">
+					<ProductApplications />
+				</div>
+			</section>
+		</ScrollReveal>
 
 		<!-- Certifications (from original — add ltxiso.png & oeko-text-logo.png to public to show logos) -->
 		<ScrollReveal>

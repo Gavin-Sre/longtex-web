@@ -1,0 +1,198 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
+import Section from "../components/Section.astro";
+import ProductSection from "../components/ProductSection.astro";
+import ProductApplications from "../components/ProductApplications.astro";
+import ScrollReveal from "../components/ScrollReveal.astro";
+
+const talcumImages = ["/talcum-coated-1.jpg", "/talcum-coated-2.jpg", "/talcum-coated-3.jpg"];
+const siliconeImages = ["/silicone-coated-1.jpg", "/silicone-coated-2.jpg", "/silicone-coated-3.jpg"];
+const foodGradeImages = ["/food-grade-rubber-1.jpg", "/food-grade-rubber-2.jpg", "/food-grade-rubber-3.jpg"];
+
+const talcumHeaderRow1 = [
+	{ text: "Count", rowspan: 2 },
+	{ text: "Packaging (kg./box)", colspan: 5 },
+	{ text: "Color", colspan: 2 },
+	{ text: "Elongation At Break", rowspan: 2 },
+];
+const talcumHeaderRow2 = ["20", "23", "25", "32", "34", "Black", "White"];
+const talcumRows = [
+	{ count: "20-28", cells: [false, false, true, true, true, true, true, ">680%"] },
+	{ count: "30-75", cells: [false, false, true, true, true, true, true, ">680%"] },
+	{ count: "80-90", cells: [false, true, false, false, false, true, true, ">680%"] },
+	{ count: "100-110", cells: [true, false, false, false, false, true, true, ">680%"] },
+];
+
+const siliconeHeaderRow1 = [
+	{ text: "Count", rowspan: 2 },
+	{ text: "Packaging (kg./box)", colspan: 5 },
+	{ text: "Color", colspan: 2 },
+	{ text: "Elongation At Break", rowspan: 2 },
+];
+const siliconeHeaderRow2 = ["20", "23", "25", "32", "34", "Black", "White"];
+const siliconeRows = [
+	{ count: "20-28", cells: [false, true, false, true, false, true, true, ">680%"] },
+	{ count: "30-55", cells: [false, true, false, true, false, true, true, ">680%"] },
+];
+
+const foodGradeHeaderRow1 = [
+	{ text: "Count", rowspan: 2 },
+	{ text: "Packaging (kg./box)", colspan: 5 },
+	{ text: "Color", colspan: 1 },
+	{ text: "Elongation At Break", rowspan: 2 },
+];
+const foodGradeHeaderRow2 = ["20", "23", "25", "32", "34"];
+const foodGradeRows = [
+	{ count: "20-28", cells: [false, false, true, true, true, "✔", ">680%"] },
+	{ count: "30-55", cells: [false, false, true, true, true, "✔", ">680%"] },
+];
+---
+
+<Layout
+	title="Our Products | Natural Rubber Thread | Longtex"
+	description="Leading Thailand natural rubber thread manufacturer. Talcum coated, silicone coated, and food grade extruded rubber threads. Count 20–110, ISO certified."
+	keywords="talcum coated rubber thread, silicone rubber thread, food grade rubber thread, natural latex thread Thailand"
+>
+	<Header />
+
+	<main>
+		<!-- Sub-header: page title -->
+		<section class="relative flex min-h-[200px] items-center justify-center bg-surface px-6 py-12 text-center">
+			<h1 class="text-3xl font-bold tracking-tight text-white md:text-4xl">Our Products</h1>
+		</section>
+
+		<div class="mx-auto max-w-4xl px-6 py-8">
+			<ProductSection
+				id="talcum"
+				title="Talcum Coated"
+				images={talcumImages}
+				tableHeaderRow1={talcumHeaderRow1}
+				tableHeaderRow2={talcumHeaderRow2}
+				tableRows={talcumRows}
+			/>
+			<ProductSection
+				id="silicone"
+				title="Silicone Coated"
+				images={siliconeImages}
+				tableHeaderRow1={siliconeHeaderRow1}
+				tableHeaderRow2={siliconeHeaderRow2}
+				tableRows={siliconeRows}
+			/>
+			<ProductSection
+				id="foodgrade"
+				title="Food Grade Rubber"
+				images={foodGradeImages}
+				tableHeaderRow1={foodGradeHeaderRow1}
+				tableHeaderRow2={foodGradeHeaderRow2}
+				tableRows={foodGradeRows}
+			/>
+		</div>
+
+		<!-- Product Applications -->
+		<div id="papp" class="scroll-mt-24"></div>
+		<ScrollReveal>
+			<Section id="applications" title="Product Applications" wide>
+				<ProductApplications />
+			</Section>
+		</ScrollReveal>
+
+		<!-- Storage tips -->
+		<ScrollReveal>
+			<Section title="How to Properly Store Extruded Rubber Threads" alt wide>
+				<p class="mb-6 font-medium text-text">
+					To maintain the longevity and optimal performance of our extruded rubber threads, it is crucial to adopt proper storage practices.
+				</p>
+				<ul class="list-inside list-disc space-y-2 text-text-muted">
+					<li>Store extruded rubber threads in a stable environment with consistent temperature and humidity, recommended between 15 to 25 degrees Celsius.</li>
+					<li>Shield threads from direct sunlight to prevent adverse effects on their properties.</li>
+					<li>Limit stacking to no more than four layers to avoid deformation and maintain the original form.</li>
+					<li>Follow a &lsquo;first in, first out&rsquo; approach for inventory management to ensure freshness.</li>
+					<li>Refrain from mixing batches during storage to preserve consistent quality.</li>
+					<li>Utilize the product within four months for optimal quality.</li>
+					<li>Keep storage boxes upright to prevent any mishandling or damage.</li>
+				</ul>
+			</Section>
+		</ScrollReveal>
+	</main>
+
+	<Footer
+		copyright="© YEAR Longtex Rubber Industry Co., Ltd."
+		address="121/32 Moo 8 Soi Suksawad 74, Suksawad Rd., Bangkru, Prapradaeng, Samutprakarn 10130 Thailand."
+	/>
+
+	<ScrollToTop />
+</Layout>
+
+<script>
+	import EmblaCarousel from "embla-carousel";
+
+	function initEmbla(root: HTMLElement): void {
+		const viewport = root.querySelector("[data-embla-viewport]") as HTMLElement;
+		const container = root.querySelector("[data-embla-container]");
+		const prevBtn = root.querySelector("[data-embla-prev]");
+		const nextBtn = root.querySelector("[data-embla-next]");
+		const dotsEl = root.querySelector("[data-embla-dots]");
+		if (!viewport || !container) return;
+
+		const embla = EmblaCarousel(viewport, {
+			loop: true,
+			align: "center",
+			draggable: true,
+		});
+
+		const slides = root.querySelectorAll("[data-embla-slide]");
+		const addDotButtons = () => {
+			if (!dotsEl || slides.length === 0) return;
+			dotsEl.innerHTML = "";
+			for (let i = 0; i < slides.length; i++) {
+				const btn = document.createElement("button");
+				btn.type = "button";
+				btn.className = "embla__dot h-2 w-2 rounded-full bg-white/40 transition hover:bg-white/60 aria-[current=true]:bg-white";
+				btn.setAttribute("aria-label", `Go to slide ${i + 1}`);
+				btn.setAttribute("aria-current", i === 0 ? "true" : "false");
+				btn.addEventListener("click", () => embla.scrollTo(i));
+				dotsEl.appendChild(btn);
+			}
+		};
+
+		const updateDots = () => {
+			const index = embla.selectedScrollSnap();
+			dotsEl?.querySelectorAll(".embla__dot").forEach((dot, i) => {
+				dot.setAttribute("aria-current", i === index ? "true" : "false");
+				dot.classList.toggle("bg-white", i === index);
+				dot.classList.toggle("bg-white/40", i !== index);
+			});
+		};
+
+		const updateButtons = () => {
+			if (prevBtn) (prevBtn as HTMLButtonElement).disabled = !embla.canScrollPrev();
+			if (nextBtn) (nextBtn as HTMLButtonElement).disabled = !embla.canScrollNext();
+		};
+
+		addDotButtons();
+		embla.on("select", () => {
+			updateDots();
+			updateButtons();
+		});
+		embla.on("init", () => {
+			updateDots();
+			updateButtons();
+		});
+
+		prevBtn?.addEventListener("click", () => embla.scrollPrev());
+		nextBtn?.addEventListener("click", () => embla.scrollNext());
+	}
+
+	function initAllCarousels(): void {
+		document.querySelectorAll("[data-embla]").forEach((el) => initEmbla(el as HTMLElement));
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initAllCarousels);
+	} else {
+		initAllCarousels();
+	}
+</script>

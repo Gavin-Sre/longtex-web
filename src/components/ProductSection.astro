@@ -1,0 +1,119 @@
+---
+/** One product block: spec table on top, Embla carousel below. */
+interface TableRow {
+	count: string;
+	cells: (boolean | string)[];
+}
+
+interface HeaderCell {
+	text: string;
+	rowspan?: number;
+	colspan?: number;
+}
+
+interface Props {
+	id: string;
+	title: string;
+	images: string[];
+	/** First header row: Count, Packaging (kg./box), Color, Elongation At Break (with rowspan/colspan) */
+	tableHeaderRow1: HeaderCell[];
+	/** Second header row: 20, 23, 25, 32, 34, Black, White (sub-labels under Packaging and Color) */
+	tableHeaderRow2?: string[];
+	tableRows: TableRow[];
+}
+
+const { id, title, images, tableHeaderRow1, tableHeaderRow2, tableRows } = Astro.props;
+const thClass = "border border-white/20 bg-[#1e3a5f] px-3 py-3 font-bold text-white";
+---
+
+<section class="product-section border-b border-white/10 py-12 first:pt-4" data-product-section>
+	<h2 class="mb-6 text-center text-2xl font-bold tracking-tight md:text-3xl">{title}</h2>
+
+	<!-- Table on top -->
+	<div class="overflow-x-auto">
+		<table class="spec-table w-full min-w-[520px] border-collapse text-left text-sm" role="grid">
+			<thead>
+				<tr>
+					{tableHeaderRow1.map((cell) => (
+						<th
+							class={thClass}
+							scope="col"
+							rowspan={cell.rowspan ?? 1}
+							colspan={cell.colspan ?? 1}
+						>
+							{cell.text}
+						</th>
+					))}
+				</tr>
+				{tableHeaderRow2 && tableHeaderRow2.length > 0 && (
+					<tr>
+						{tableHeaderRow2.map((label) => (
+							<th class={thClass} scope="col">
+								{label}
+							</th>
+						))}
+					</tr>
+				)}
+			</thead>
+			<tbody>
+				{tableRows.map((row, ri) => (
+					<tr class={ri % 2 === 0 ? "bg-white/5" : "bg-white/10"}>
+						<td class="border border-white/20 px-3 py-2 font-medium">{row.count}</td>
+						{row.cells.map((cell) => (
+							<td class="border border-white/20 px-3 py-2 text-center">
+								{typeof cell === "boolean"
+									? cell
+										? "✔"
+										: "–"
+									: cell}
+							</td>
+						))}
+					</tr>
+				))}
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Carousel below -->
+	<div class="embla mt-8" id={`embla-${id}`} data-embla>
+		<div class="embla__viewport overflow-hidden rounded-lg" data-embla-viewport>
+			<div class="embla__container flex touch-pan-y gap-4" data-embla-container>
+				{images.map((src) => (
+					<div class="embla__slide min-w-0 flex-[0_0_100%]" data-embla-slide>
+						<img
+							src={src}
+							alt=""
+							class="h-auto w-full rounded-lg object-cover"
+							width="800"
+							height="500"
+							loading="lazy"
+						/>
+					</div>
+				))}
+			</div>
+		</div>
+		<div class="embla__controls mt-4 flex items-center justify-center gap-4" data-embla-controls>
+			<button
+				type="button"
+				class="embla__prev flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition hover:bg-white/20 disabled:opacity-40"
+				aria-label="Previous slide"
+				data-embla-prev
+			>
+				<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+				</svg>
+			</button>
+			<div class="embla__dots flex gap-2" data-embla-dots></div>
+			<button
+				type="button"
+				class="embla__next flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition hover:bg-white/20 disabled:opacity-40"
+				aria-label="Next slide"
+				data-embla-next
+			>
+				<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+				</svg>
+			</button>
+		</div>
+	</div>
+</section>
