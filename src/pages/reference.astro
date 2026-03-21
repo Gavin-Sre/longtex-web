@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
+import Section from "../components/Section.astro";
+import ReferenceSpecTable from "../components/ReferenceSpecTable.astro";
+
+const threadYieldHeaders = ["SIZE", "DIA. (mm)", "DIA. (in)", "AREA (mm²)", "YIELD (m/kg)", "YIELD (yd/lb)"];
+
+/** Values transcribed from legacy Longtex reference HTML. */
+const threadYieldRows: string[][] = [
+	["20", "1.270", "0.050", "1.267", "777.932", "383.917"],
+	["22", "1.115", "0.045", "1.047", "936.458", "464.539"],
+	["24", "1.058", "0.042", "0.880", "1114.462", "552.840"],
+	["28", "0.907", "0.036", "0.646", "1516.907", "752.476"],
+	["30", "0.847", "0.033", "0.563", "1741.347", "863.812"],
+	["32", "0.794", "0.031", "0.495", "1981.266", "982.826"],
+	["34", "0.747", "0.029", "0.438", "2236.664", "1109.519"],
+	["36", "0.706", "0.028", "0.391", "2507.540", "1243.890"],
+	["37", "0.686", "0.027", "0.370", "2648.783", "1313.954"],
+	["38", "0.668", "0.026", "0.351", "2793.895", "1385.939"],
+	["40", "0.635", "0.025", "0.317", "3095.728", "1535.666"],
+	["42", "0.605", "0.024", "0.024", "3413.041", "1693.027"],
+	["44", "0.577", "0.023", "0.262", "3745.831", "1858.156"],
+	["48", "0.529", "0.021", "0.220", "4457.849", "2211.359"],
+	["50", "0.508", "0.020", "0.203", "4837.076", "2399.479"],
+	["52", "0.488", "0.019", "0.187", "5231.781", "2595.276"],
+	["55", "0.462", "0.018", "0.168", "5852.862", "2903.369"],
+	["60", "0.423", "0.017", "0.141", "6965.389", "3455.249"],
+	["63", "0.403", "0.016", "0.128", "7679.341", "3809.412"],
+	["65", "0.391", "0.015", "0.120", "8174.658", "4055.119"],
+	["70", "0.363", "0.014", "0.103", "9480.668", "4702.978"],
+	["75", "0.339", "0.013", "0.090", "10883.420", "5398.827"],
+	["80", "0.318", "0.013", "0.079", "12382.914", "6142.665"],
+	["85", "0.299", "0.012", "0.070", "13979.149", "6934.493"],
+	["90", "0.282", "0.011", "0.063", "15672.125", "7774.310"],
+	["100", "0.254", "0.010", "0.051", "19348.303", "9597.914"],
+];
+
+const conversionRows: string[][] = [
+	["1 kg = 2.0246 lbs", "1 meter = 3.281 fts", "1 ft = 0.3048 meter"],
+	["1 lbs = 0.454kg", "1 meter = 1.094 yds", "1 inch = 25.4 mm"],
+];
+---
+
+<Layout
+	title="Technical Reference | Longtex Rubber Thread"
+	description="Size, diameter, area, and yield reference for Longtex natural rubber threads (density basis as published)."
+	keywords="rubber thread size chart, thread yield m/kg, rubber thread diameter reference, Longtex specifications"
+>
+	<Header />
+
+	<main>
+		<section class="relative flex min-h-[200px] items-center justify-center bg-surface px-6 py-12 text-center">
+			<h1 class="text-3xl font-bold tracking-tight text-white md:text-4xl">Reference</h1>
+		</section>
+
+		<Section id="thread-yield" class="scroll-mt-24" title="Thread sizing & yield" alt wide>
+			<p class="mb-6 text-[1.0625rem] leading-[1.7] text-muted">
+				Legacy technical table for extruded rubber thread: count (size), diameters, cross-sectional area, and yield. Values are
+				as published for planning and conversion; confirm critical dimensions with your Longtex representative.
+			</p>
+			<h3 class="mx-auto mb-1 max-w-[900px] text-center text-[20px] font-bold leading-tight text-text">
+				Size, Diameter, and Yield of Longtex's Threads
+			</h3>
+			<p class="mx-auto mb-3 max-w-[900px] text-right text-sm font-bold text-text">
+				Density = 1.02(g/mm²)
+			</p>
+			<ReferenceSpecTable headers={threadYieldHeaders} rows={threadYieldRows} />
+
+			<div id="conversion" class="mx-auto mt-14 max-w-[900px] scroll-mt-24 border-t border-white/10 pt-12">
+				<h3 class="mb-4 text-center text-[20px] font-bold leading-tight text-text">Conversion Table</h3>
+				<ReferenceSpecTable rows={conversionRows} />
+			</div>
+		</Section>
+	</main>
+
+	<Footer
+		copyright="© YEAR Longtex Rubber Industry Co., Ltd."
+		address="121/32 Moo 8 Soi Suksawad 74, Suksawad Rd., Bangkru, Prapradaeng, Samutprakarn 10130 Thailand."
+	/>
+
+	<ScrollToTop />
+</Layout>

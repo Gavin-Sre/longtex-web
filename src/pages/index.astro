@@ -79,23 +79,43 @@ const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 		<Section id="products" title="Products" alt wide>
 			<div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" role="list">
 				<ScrollReveal delay={0}>
-					<ProductCard title="Silicone" imageSrc={`${baseUrl}silicone.jpg`} imageAlt="Silicone rubber thread">
-						Elevate performance with silicone-coated rubber threads — dust free, durable, flexible, and adaptable for various demanding applications.
+					<ProductCard
+						title="Silicone"
+						href={`${baseUrl}products#silicone`}
+						imageSrc={`${baseUrl}silicone.jpg`}
+						imageAlt="Silicone rubber thread"
+					>
+						<!-- Elevate performance with silicone-coated rubber threads — dust free, durable, flexible, and adaptable for various demanding applications. -->
 					</ProductCard>
 				</ScrollReveal>
 				<ScrollReveal delay={80}>
-					<ProductCard title="Talcum" imageSrc={`${baseUrl}talcum.jpg`} imageAlt="Talcum coated rubber thread">
-						Experience excellence with talcum-coated rubber threads — enhanced softness, reduced friction, and impeccable handling for optimum performance.
+					<ProductCard
+						title="Talcum"
+						href={`${baseUrl}products#talcum`}
+						imageSrc={`${baseUrl}talcum.jpg`}
+						imageAlt="Talcum coated rubber thread"
+					>
+						<!-- Experience excellence with talcum-coated rubber threads — enhanced softness, reduced friction, and impeccable handling for optimum performance. -->
 					</ProductCard>
 				</ScrollReveal>
 				<ScrollReveal delay={160}>
-					<ProductCard title="Food Grade" imageSrc={`${baseUrl}talcum.jpg`} imageAlt="Food grade rubber thread">
-						Food-grade rubber threads ensure compliance with regulations, offering safety, hygiene, and quality assurance for various applications.
+					<ProductCard
+						title="Food Grade"
+						href={`${baseUrl}products#foodgrade`}
+						imageSrc={`${baseUrl}talcum.jpg`}
+						imageAlt="Food grade rubber thread"
+					>
+						<!-- Food-grade rubber threads ensure compliance with regulations, offering safety, hygiene, and quality assurance for various applications. -->
 					</ProductCard>
 				</ScrollReveal>
 				<ScrollReveal delay={240}>
-					<ProductCard title="Specialized Threads" imageSrc={`${baseUrl}color.jpg`} imageAlt="Specialized rubber threads">
-						Choose excellence beyond standards; our threads meet unique needs with UV resistance, fire retardancy, and vibrant colors.
+					<ProductCard
+						title="Specialized Threads"
+						href={`${baseUrl}products#specialized`}
+						imageSrc={`${baseUrl}color.jpg`}
+						imageAlt="Specialized rubber threads"
+					>
+						<!-- Choose excellence beyond standards; our threads meet unique needs with UV resistance, fire retardancy, and vibrant colors. -->
 					</ProductCard>
 				</ScrollReveal>
 			</div>

@@ -1,0 +1,50 @@
+---
+/**
+ * Reference data grid — dark panel, white/light text, matches product spec tables.
+ * Omit headers (or pass []) for a headerless table (e.g. conversion factors).
+ */
+interface Props {
+	headers?: string[];
+	rows: string[][];
+}
+
+const { headers = [], rows } = Astro.props;
+const hasHeader = headers.length > 0;
+
+const thClass =
+	"border border-white/20 bg-[#1e3a5f] px-2 py-2.5 text-center text-[0.9375rem] font-bold uppercase tracking-wide text-white";
+const tdClass =
+	"border border-white/20 px-3 py-2.5 text-center text-[0.8125rem] leading-snug text-text sm:px-4 sm:text-sm";
+---
+
+<div
+	class="reference-spec-table mx-auto w-full max-w-[900px] overflow-x-auto rounded-xl border border-white/10 bg-white/6 px-4 py-4 font-sans backdrop-blur-sm sm:px-6"
+>
+	<table
+		class:list={["w-full border-collapse", hasHeader ? "min-w-[640px]" : "min-w-0"]}
+		role="grid"
+	>
+		{
+			hasHeader && (
+				<thead>
+					<tr>
+						{headers.map((h) => (
+							<th class={thClass} scope="col">
+								{h}
+							</th>
+						))}
+					</tr>
+				</thead>
+			)
+		}
+		<tbody>
+			{rows.map((cells, ri) => (
+				<tr class={ri % 2 === 0 ? "bg-white/5" : "bg-white/10"}>
+					{cells.map((cell) => (
+						<td class={tdClass}>{cell}</td>
+					))}
+				</tr>
+			))}
+		</tbody>
+	</table>
+</div>

@@ -90,12 +90,13 @@ const foodGradeRows = [
 				tableHeaderRow2={foodGradeHeaderRow2}
 				tableRows={foodGradeRows}
 			/>
+			<ProductSection id="specialized" title="Specialized Threads" placeholder />
 		</div>
 
 		<!-- Product Applications -->
 		<div id="papp" class="scroll-mt-24"></div>
 		<ScrollReveal>
-			<Section id="applications" title="Product Applications" wide>
+			<Section id="applications" class="scroll-mt-24" title="Product Applications" wide>
 				<ProductApplications />
 			</Section>
 		</ScrollReveal>
@@ -141,7 +142,6 @@ const foodGradeRows = [
 		const embla = EmblaCarousel(viewport, {
 			loop: true,
 			align: "center",
-			draggable: true,
 		});
 
 		const slides = root.querySelectorAll("[data-embla-slide]");

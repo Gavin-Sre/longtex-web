@@ -14,21 +14,40 @@ interface HeaderCell {
 interface Props {
 	id: string;
 	title: string;
-	images: string[];
+	/** Omit when placeholder is true */
+	images?: string[];
 	/** First header row: Count, Packaging (kg./box), Color, Elongation At Break (with rowspan/colspan) */
-	tableHeaderRow1: HeaderCell[];
+	tableHeaderRow1?: HeaderCell[];
 	/** Second header row: 20, 23, 25, 32, 34, Black, White (sub-labels under Packaging and Color) */
 	tableHeaderRow2?: string[];
-	tableRows: TableRow[];
+	tableRows?: TableRow[];
+	/** Title + optional slot only; no spec table or carousel */
+	placeholder?: boolean;
 }
 
-const { id, title, images, tableHeaderRow1, tableHeaderRow2, tableRows } = Astro.props;
+const {
+	id,
+	title,
+	images = [],
+	tableHeaderRow1 = [],
+	tableHeaderRow2,
+	tableRows = [],
+	placeholder = false,
+} = Astro.props;
 const thClass = "border border-white/20 bg-[#1e3a5f] px-3 py-3 font-bold text-white";
 ---
 
-<section class="product-section border-b border-white/10 py-12 first:pt-4" data-product-section>
+<section id={id} class="product-section scroll-mt-24 border-b border-white/10 py-12 first:pt-4" data-product-section>
 	<h2 class="mb-6 text-center text-2xl font-bold tracking-tight md:text-3xl">{title}</h2>
 
+	{placeholder ? (
+		<div class="mx-auto max-w-2xl text-center">
+			<p class="m-0 text-[1.0625rem] leading-[1.7] text-text-muted">
+				Specifications and imagery for specialized threads (UV resistance, fire retardancy, custom colors, and more) will be published here soon.
+			</p>
+		</div>
+	) : (
+		<>
 	<!-- Table on top -->
 	<div class="overflow-x-auto">
 		<table class="spec-table w-full min-w-[520px] border-collapse text-left text-sm" role="grid">
@@ -116,4 +135,6 @@ const thClass = "border border-white/20 bg-[#1e3a5f] px-3 py-3 font-bold text-wh
 			</button>
 		</div>
 	</div>
+		</>
+	)}
 </section>
