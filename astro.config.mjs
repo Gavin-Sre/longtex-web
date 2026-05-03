@@ -8,7 +8,7 @@ const base = process.env.BASE_PATH || "/";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://gavin-sre.github.io/longtex-web",
+  site: "https://gavin-sre.github.io/longtex-rubber",
   base,
   trailingSlash: "always",
 
@@ -17,7 +17,7 @@ export default defineConfig({
       changefreq: "monthly",
       priority: 0.7,
       serialize(item) {
-        if (item.url.endsWith("/longtex-web/")) item.priority = 1.0;
+        if (item.url.endsWith("/longtex-rubber/")) item.priority = 1.0;
         if (item.url.includes("/products")) item.priority = 0.9;
         if (item.url.includes("/reference")) item.priority = 0.8;
         return item;

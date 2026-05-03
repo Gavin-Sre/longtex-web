@@ -4,8 +4,8 @@
 
 Corporate B2B marketing website for **Longtex Rubber Industry Co., Ltd.**, a Thailand-based manufacturer of extruded natural rubber threads. The site is a product catalog and technical reference hub targeting international B2B buyers.
 
-- **Deployed at:** `https://gavin-sre.github.io/longtex-web/`
-- **Repository:** `gavin-sre/longtex-web` on GitHub Pages
+- **Deployed at:** `https://gavin-sre.github.io/longtex-rubber/`
+- **Repository:** `gavin-sre/longtex-rubber` on GitHub Pages
 
 ## Primary Goal: SEO Optimization
 
@@ -66,7 +66,7 @@ These are non-negotiable. Apply them to every file you touch or create.
 ### Sitemap & Crawlability
 
 - `@astrojs/sitemap` must be installed and configured in `astro.config.mjs`
-- `site` in `astro.config.mjs` must be `'https://gavin-sre.github.io/longtex-web'` (full path, no trailing slash)
+- `site` in `astro.config.mjs` must be `'https://gavin-sre.github.io/longtex-rubber'` (full path, no trailing slash)
 - `trailingSlash: 'always'` must be set for canonical consistency
 - `public/robots.txt` must exist, reference the sitemap, and allow all major crawlers
 
@@ -132,7 +132,7 @@ These are known issues. Fix them proactively when working in nearby files:
 2. `robots.txt` does not exist in `/public/`
 3. `@astrojs/sitemap` is not installed
 4. No JSON-LD structured data anywhere in the project
-5. `site` in `astro.config.mjs` is missing the `/longtex-web` base path (canonical URLs are wrong)
+5. `site` in `astro.config.mjs` is missing the `/longtex-rubber` base path (canonical URLs are wrong)
 6. Google Fonts are not preloaded (LCP impact)
 7. Carousel images in `ProductSection.astro` have empty alt text
 8. Product images use plain `<img>` instead of Astro `<Image>` (no WebP conversion)

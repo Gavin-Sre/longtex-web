@@ -1,4 +1,4 @@
-# longtex-web
+# longtex-rubber
 
 A site for Longtex Corp. Built with [Astro](https://astro.build).
 
