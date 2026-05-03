@@ -1,124 +1,106 @@
 ---
-/** Product Applications infographic: central hub + five application cards with dotted connectors. */
 interface ApplicationItem {
 	title: string;
 	description: string;
 	icon: "sports" | "packaging" | "socks" | "food" | "medical";
+	span?: "wide" | "normal";
 }
 
 const applications: ApplicationItem[] = [
 	{
 		title: "Sports Industry",
-		description: "Ranging from sport garments such as waist straps, compression tights to bungee jumping",
+		description: "Waist straps, compression tights, bungee cords, and performance sportswear that demands consistent elasticity under repeated stress.",
 		icon: "sports",
-	},
-	{
-		title: "Packaging",
-		description: "Made for braids and cords for multi-purpose uses",
-		icon: "packaging",
-	},
-	{
-		title: "Socks Top",
-		description: "Smaller counts of rubber threads made for socks",
-		icon: "socks",
+		span: "wide",
 	},
 	{
 		title: "Food Industry",
-		description: "Food grade rubber for meat netting and chicken loops",
+		description: "Food-grade rubber for meat netting, chicken loops, and packaging where safety and hygiene compliance are non-negotiable.",
 		icon: "food",
+		span: "wide",
+	},
+	{
+		title: "Socks Top",
+		description: "Fine counts of rubber thread engineered for sock cuffs with lasting hold.",
+		icon: "socks",
+	},
+	{
+		title: "Packaging",
+		description: "Braids and cords built for multi-purpose industrial and retail packaging applications.",
+		icon: "packaging",
 	},
 	{
 		title: "Medical Products",
-		description: "Masks and orthopedic knit, woven or stockings",
+		description: "Surgical masks, orthopedic knits, compression stockings, and medical-grade elastic goods.",
 		icon: "medical",
 	},
 ];
 ---
 
-<div class="flex flex-wrap items-center justify-center gap-0 p-8 px-4 md:justify-start md:gap-4 md:p-12" data-product-apps>
-	<!-- Central circle: dark blue, white text -->
-	<div class="app-hub shrink-0 flex h-[140px] w-[140px] items-center justify-center rounded-full bg-[#1e3a5f] p-3 opacity-0 transition-opacity duration-300 md:h-40 md:w-40" aria-hidden="true">
-		<span class="text-center text-[0.8125rem] font-bold uppercase leading-tight tracking-wide text-white md:text-sm">Product Applications</span>
-	</div>
-
-	<!-- Connectors + cards column -->
-	<div class="flex min-w-0 max-w-[520px] flex-1 flex-col gap-4 md:max-w-[560px]">
-		{applications.map((item, i) => (
-			<div class="app-row flex translate-x-3 items-stretch gap-0 opacity-0" style={`--app-delay: ${i * 0.12}s`}>
-				<svg class="mt-2 h-6 w-14 shrink-0 text-slate-500 md:w-[72px]" viewBox="0 0 80 24" fill="none" aria-hidden="true">
-					<line x1="0" y1="12" x2="80" y2="12" stroke="currentColor" stroke-width="2" stroke-dasharray="4 6" stroke-linecap="round" />
-				</svg>
-				<div class="flex min-w-0 flex-1 items-center justify-between gap-4 rounded-xl border border-[#1e3a5f]/10 bg-[#cff0fe] px-5 py-4">
-					<div class="min-w-0">
-						<h3 class="mb-1 text-base font-bold leading-tight text-slate-900">{item.title}</h3>
-						<p class="m-0 text-[0.8125rem] leading-snug text-slate-600">{item.description}</p>
-					</div>
-					<div class="flex h-10 w-10 shrink-0 items-center justify-center text-[#1e3a5f]" aria-hidden="true">
-						{item.icon === "sports" && (
-							<svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-								<circle cx="12" cy="12" r="4" />
-								<path d="M12 8v8M8 12h8" />
-							</svg>
-						)}
-						{item.icon === "packaging" && (
-							<svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-							</svg>
-						)}
-						{item.icon === "socks" && (
-							<svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M7 4v16a1 1 0 0 0 1.5.87L12 18l3.5 2.87A1 1 0 0 0 17 20V4a1 1 0 0 0-1.5-.87L12 6l-3.5-2.87A1 1 0 0 0 7 4z" />
-								<path d="M4 6h16" />
-							</svg>
-						)}
-						{item.icon === "food" && (
-							<svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-								<circle cx="12" cy="12" r="9" />
-								<path d="M8 14s1.5 2 4 2 4-2 4-2" />
-								<path d="M9 9h.01M15 9h.01M9.5 12a.5.5 0 0 1 1 0M13.5 12a.5.5 0 0 1 1 0" />
-							</svg>
-						)}
-						{item.icon === "medical" && (
-							<svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M12 4v16M4 12h16" />
-							</svg>
-						)}
-					</div>
-				</div>
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-3" data-product-apps>
+	{applications.map((item, i) => (
+		<a
+			class={`bento-card relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-white/[0.06] bg-surface p-7 no-underline cursor-pointer transition-[border-color,transform] duration-200 ease-out hover:border-accent/30 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 before:absolute before:inset-y-0 before:left-0 before:w-[3px] before:rounded-l-2xl before:bg-accent before:opacity-70 before:content-[''] after:absolute after:-bottom-4 after:-right-4 after:size-28 after:rounded-full after:bg-accent after:opacity-[0.03] after:pointer-events-none after:content-[''] ${i === 0 ? "sm:col-span-2" : ""}`}
+			style={`--i: ${i}`}
+		>
+			<div class="size-10 shrink-0 text-accent" aria-hidden="true">
+				{item.icon === "sports" && (
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="12" r="10" />
+						<path d="M4.93 4.93C6.58 7.6 7 9.8 7 12s-.42 4.4-2.07 7.07M19.07 4.93C17.42 7.6 17 9.8 17 12s.42 4.4 2.07 7.07M2 12h20" />
+					</svg>
+				)}
+				{item.icon === "food" && (
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
+						<path d="M8 9h.01M16 9h.01M8 14s1.5 2 4 2 4-2 4-2" />
+					</svg>
+				)}
+				{item.icon === "socks" && (
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M6 3h12v11l-4 4H6V3z" />
+						<path d="M14 14l4 4a2 2 0 0 1-2.83 2.83L10 15.66" />
+						<path d="M6 8h12" />
+					</svg>
+				)}
+				{item.icon === "packaging" && (
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+					</svg>
+				)}
+				{item.icon === "medical" && (
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+						<rect x="3" y="3" width="18" height="18" rx="3" />
+						<path d="M12 8v8M8 12h8" />
+					</svg>
+				)}
 			</div>
-		))}
-	</div>
+			<div class="flex flex-col gap-1.5">
+				<h3 class="m-0 text-base font-bold leading-tight text-text">{item.title}</h3>
+				<p class="m-0 text-[0.8125rem] leading-relaxed text-text-muted">{item.description}</p>
+			</div>
+		</a>
+	))}
 </div>
 
-<!-- Only keyframes + is-in-view animation (Tailwind can't do this declaratively) -->
 <style>
+	/* Initial hidden state and keyframe — cannot be expressed with Tailwind utility classes */
+	.bento-card {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
 	@media (prefers-reduced-motion: no-preference) {
-		[data-product-apps].is-in-view .app-hub {
-			opacity: 1;
-			animation: app-fade-in 0.6s ease-out forwards;
-		}
-		[data-product-apps].is-in-view .app-row {
-			animation: app-fade-slide-in 0.5s ease-out forwards;
-			animation-delay: var(--app-delay, 0s);
-			animation-fill-mode: both;
+		[data-product-apps].is-in-view .bento-card {
+			animation: bento-rise 0.5s ease-out forwards;
+			animation-delay: calc(var(--i) * 0.08s);
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.app-hub,
-		.app-row {
-			opacity: 1;
-			transform: none;
-			animation: none;
-		}
+		.bento-card { opacity: 1; transform: none; }
 	}
-	@keyframes app-fade-in {
-		from { opacity: 0; }
-		to { opacity: 1; }
-	}
-	@keyframes app-fade-slide-in {
-		from { opacity: 0; transform: translateX(0.75rem); }
-		to { opacity: 1; transform: translateX(0); }
+	@keyframes bento-rise {
+		from { opacity: 0; transform: translateY(1rem); }
+		to   { opacity: 1; transform: translateY(0); }
 	}
 </style>
 
@@ -126,18 +108,13 @@ const applications: ApplicationItem[] = [
 	(function () {
 		const el = document.querySelector("[data-product-apps]");
 		if (!el) return;
-		const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-		if (reducedMotion) {
+		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 			el.classList.add("is-in-view");
 			return;
 		}
 		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) entry.target.classList.add("is-in-view");
-				});
-			},
-			{ rootMargin: "0px 0px -5% 0px", threshold: 0 }
+			(entries) => entries.forEach((e) => { if (e.isIntersecting) el.classList.add("is-in-view"); }),
+			{ rootMargin: "0px 0px -8% 0px", threshold: 0 }
 		);
 		observer.observe(el);
 	})();

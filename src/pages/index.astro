@@ -41,7 +41,7 @@ const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 				<p class="hero-text-item mb-8 text-lg font-medium leading-[1.65] text-white/95 drop-shadow-sm">
 					Looking for high quality extruded rubber threads? We're here to help!
 				</p>
-				<a href={`${baseUrl}contact`} class="hero-text-item inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-bg no-underline transition-colors hover:bg-white/90">
+				<a href="#contact" class="hero-text-item inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-bg no-underline transition-colors hover:bg-white/90">
 					Contact Us
 				</a>
 			</div>
@@ -81,7 +81,7 @@ const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 				<ScrollReveal delay={0}>
 					<ProductCard
 						title="Silicone"
-						href={`${baseUrl}products#silicone`}
+						href={`${baseUrl}products/#silicone`}
 						imageSrc={`${baseUrl}silicone.jpg`}
 						imageAlt="Silicone rubber thread"
 					>
@@ -91,7 +91,7 @@ const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 				<ScrollReveal delay={80}>
 					<ProductCard
 						title="Talcum"
-						href={`${baseUrl}products#talcum`}
+						href={`${baseUrl}products/#talcum`}
 						imageSrc={`${baseUrl}talcum.jpg`}
 						imageAlt="Talcum coated rubber thread"
 					>
@@ -101,7 +101,7 @@ const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 				<ScrollReveal delay={160}>
 					<ProductCard
 						title="Food Grade"
-						href={`${baseUrl}products#foodgrade`}
+						href={`${baseUrl}products/#foodgrade`}
 						imageSrc={`${baseUrl}talcum.jpg`}
 						imageAlt="Food grade rubber thread"
 					>
@@ -111,7 +111,7 @@ const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 				<ScrollReveal delay={240}>
 					<ProductCard
 						title="Specialized Threads"
-						href={`${baseUrl}products#specialized`}
+						href={`${baseUrl}products/#specialized`}
 						imageSrc={`${baseUrl}color.jpg`}
 						imageAlt="Specialized rubber threads"
 					>
@@ -121,14 +121,14 @@ const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 			</div>
 			<div class="mt-10 flex justify-center">
 				<ScrollReveal delay={120}>
-					<Button href={`${baseUrl}products`} variant="secondary" size="large">Explore our products</Button>
+					<Button href={`${baseUrl}products/`} variant="secondary" size="large">Explore our products</Button>
 				</ScrollReveal>
 			</div>
 		</Section>
 
 		<!-- Product Applications infographic (central hub + 5 cards with dotted lines) -->
 		<ScrollReveal>
-			<section id="papp" class="px-6 py-16">
+			<section id="papp" class="scroll-mt-20 px-6 py-16">
 				<div class="mx-auto max-w-[900px]">
 					<ProductApplications />
 				</div>
@@ -151,7 +151,7 @@ const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 				<p class="mx-0 mb-6 mt-0 text-[1.0625rem] leading-[1.7] text-muted">
 					Ready to get started? Reach out and we'll get back to you as soon as we can.
 				</p>
-				<Button href={`${baseUrl}contact`} size="large">Contact us</Button>
+				<Button href="#contact" size="large">Contact us</Button>
 			</Section>
 		</ScrollReveal>
 	</main>
