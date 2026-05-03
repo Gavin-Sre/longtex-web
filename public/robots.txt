@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gavin-sre.github.io/longtex-web/sitemap-index.xml
